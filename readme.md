@@ -15,10 +15,10 @@ This plugin exposes 4 config entries:
 `ret_elevator_values: (4-6:60)(6-10:5)(10-15:1)`  
 _These are the values that can be chosen by the randomiser once the elevator is activated._   
 The format is pretty simple:  
-`(minTime-maxTime:weight)` 
+`(minTime-maxTime:weight)`  
 Don't want a range, but instead just a single random number? use `(5:1)` `(time:weight)`  
 Don't want a weight? Just leave out `:weight`. Like so: `(2-10)` This will use a default weight of 1. Saves some time, or something.  
-To "turn off" the plugin Just set this to `(5)`. And it will always be 5, like default.
+To "turn off" the plugin Just set this to `(5)`. And it will always be 5, like default.  
 
 `ret_broadcast_message: This elevator will take $seconds$`  
 _The message that will be broadcast when the elevator is activated. This will be broadcast to everyone near the elevator_  
