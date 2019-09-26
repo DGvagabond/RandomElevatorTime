@@ -24,7 +24,6 @@ namespace RandomElevatorTimer
 	public class ElevatorTimer : Plugin
 	{
 		public WeightedRandomizer WeightedRandomizer { get; private set; }
-		public Dictionary<ElevatorType, DateTime> CachedElevators { get; private set; }
 
 		private Random random;
 
@@ -56,8 +55,6 @@ namespace RandomElevatorTimer
 			BroadcastValue = GetConfigFloat("ret_broadcast_value");
 			TimerValues = GetConfigString("ret_timer_values");
 			BroadcastMessage = GetConfigString("ret_broadcast_message");
-
-			CachedElevators = new Dictionary<ElevatorType, DateTime>();
 			WeightedRandomizer = new WeightedRandomizer(ParseWeightedValues(), random);
 		}
 

@@ -33,6 +33,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Assemblies\Assembly-CSharp.dll</HintPath>
+    </Reference>
     <Reference Include="Smod2">
       <HintPath>E:\SteamLibrary\steamapps\common\SCP Secret Laboratory2\SCPSL_Data\Managed\Smod2.dll</HintPath>
     </Reference>

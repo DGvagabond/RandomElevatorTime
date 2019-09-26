@@ -21,20 +21,12 @@ namespace RandomElevatorTimer
 
 		public void OnElevatorUse(PlayerElevatorUseEvent ev)
 		{
-			// Alright so if you're here to check if I've done anything wrong,
-			// this function just checks if the current time is higher than the time the elevator should arrive.
-			// if it is higher, it will return true. otherwise this function will return.
-			// but it seems like there's a small window to spam a message and get a very different value, so you
-			// can wait shorter. Weird.
-			if (!CanUseElevator(ev.Elevator.ElevatorType))
+			if ((ev.Elevator.GetComponent() as Lift).operative)
 			{
 				return;
 			}
 
 			float newSpeed = (float)plugin.WeightedRandomizer.GetValue();
-
-			// idiotic named function but this just changes a value in the dictionary located in the plugin root
-			SetKeyValue(ev.Elevator.ElevatorType, DateTime.Now, newSpeed);
 
 			ev.Elevator.MovingSpeed = newSpeed;
 
@@ -65,14 +57,6 @@ namespace RandomElevatorTimer
 					player.PersonalBroadcast(time, message, false);
 				}
 			}
-		}
-
-		private bool CanUseElevator(ElevatorType elevatorType)
-			=> !plugin.CachedElevators.TryGetValue (elevatorType, out DateTime time) || DateTime.Now > time;
-
-		private void SetKeyValue(ElevatorType type, DateTime value, float waitTime)
-		{
-			plugin.CachedElevators[type] = value + TimeSpan.FromSeconds(waitTime);
 		}
 
 		private float GetMagnitude(Vector one, Vector two)
