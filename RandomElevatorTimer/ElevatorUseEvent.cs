@@ -21,7 +21,7 @@ namespace RandomElevatorTimer
 
 		public void OnElevatorUse(PlayerElevatorUseEvent ev)
 		{
-			if ((ev.Elevator.GetComponent() as Lift).operative)
+			if (!(ev.Elevator.GetComponent() as Lift).operative)
 			{
 				return;
 			}
