@@ -39,11 +39,11 @@ namespace RandomElevatorTimer
 
 			this.AddConfig(new ConfigSetting("ret_timer_values", "(4-6:60)(6-10:5)(10-15:1)", false, true,
 				"The values that the elevator time can be set at."));
-			this.AddConfig(new ConfigSetting("ret_broadcast_value", "7", false, true,
+			this.AddConfig(new ConfigSetting("ret_min_broadcast_value", 7, false, true,
 				"Minimum amount of seconds before broadcasting the time to all players near the elevator."));
 			this.AddConfig(new ConfigSetting("ret_broadcast_message", "This elevator will take $seconds$ seconds to arrive.", false, true,
 				"The message that will be broadcasted to all users. Replacement string for seconds is \"$seconds$\""));
-			this.AddConfig(new ConfigSetting("ret_broadcast_time", "3", false, true,
+			this.AddConfig(new ConfigSetting("ret_max_broadcast_time", 2, false, true,
 				"The time the message will be broadcasted for."));
 		}
 
@@ -51,8 +51,8 @@ namespace RandomElevatorTimer
 		{
 			random = new Random();
 
-			BroadCastTime = (uint)GetConfigInt("ret_broadcast_time");
-			BroadcastValue = GetConfigFloat("ret_broadcast_value");
+			BroadCastTime = (uint)GetConfigInt("ret_max_broadcast_time");
+			BroadcastValue = GetConfigFloat("ret_min_broadcast_value");
 			TimerValues = GetConfigString("ret_timer_values");
 			BroadcastMessage = GetConfigString("ret_broadcast_message");
 			WeightedRandomizer = new WeightedRandomizer(ParseWeightedValues(), random);

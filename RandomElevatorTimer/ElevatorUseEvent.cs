@@ -41,7 +41,7 @@ namespace RandomElevatorTimer
 
 			string message = plugin.BroadcastMessage.Replace("$seconds$", $"{Math.Floor(newSpeed)}");
 
-			uint time = plugin.BroadCastTime;
+			uint time = Math.Min(plugin.BroadCastTime, (uint)Math.Floor(newSpeed));
 
 			Vector playerPos = ev.Player.GetPosition();
 
