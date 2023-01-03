@@ -22,11 +22,11 @@ namespace RandomElevatorTimer
 		public double GetValue()
 		{
 			double currentWeight = 0;
-			double randomWeight = random.NextDouble() * totalWeight;
+			var randomWeight = random.NextDouble() * totalWeight;
 
-			WeightedValue currentWeightedValue = weightedValues.First();
+			var currentWeightedValue = weightedValues.First();
 
-			foreach (WeightedValue w in weightedValues)
+			foreach (var w in weightedValues)
 			{
 				currentWeightedValue = w;
 				currentWeight += w.GetWeight();
